@@ -1,8 +1,8 @@
 import React, { PropsWithChildren, useEffect, useState } from "react";
-import { Product } from "../utils/types-interfaces";
+import { IProduct } from "../utils/types-interfaces";
 
 type TProductsContext = {
-  products: Product[];
+  products: IProduct[];
   defaultImage: string;
 };
 
