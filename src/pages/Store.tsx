@@ -8,50 +8,85 @@ import Pagination from "../components/Pagination";
 
 const Store = () => {
   const { products } = useContext(ProductsContext);
-  const [filteredProducts, setFilteredProducts] = useState<IProduct[]>([]);
-  const [filterInput, setFilterInput] = useState<string>("");
-  const [searchInput, setSearchInput] = useState<string>("");
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const [cardsPerPage, setCardsPerPage] = useState<number>(9);
+  const [state, setState] = useState({
+    filteredProducts: products,
+    filterInput: "",
+    searchInput: "",
+    currentPage: 1,
+    cardsPerPage: 9,
+  });
   const navigate = useNavigate();
 
-  const lastCardIndex = currentPage * cardsPerPage;
-  const firstCardIndex = lastCardIndex - cardsPerPage;
-  const currentCards = filteredProducts.slice(firstCardIndex, lastCardIndex);
+  const lastCardIndex = state.currentPage * state.cardsPerPage;
+  const firstCardIndex = lastCardIndex - state.cardsPerPage;
+  const currentCards = state.filteredProducts.slice(
+    firstCardIndex,
+    lastCardIndex
+  );
 
   const redirectHandler = (productId: string) => {
     return navigate(`/store/${productId}`);
   };
 
   const filterHandler = (filterFromInput: string) => {
-    setFilterInput(filterFromInput);
+    setState((prevState) => {
+      return { ...prevState, filterInput: filterFromInput };
+    });
+  };
+  const searchHandler = (searchFromInput: string) => {
+    setState((prevState) => {
+      return { ...prevState, searchInput: searchFromInput };
+    });
+  };
+  const changePageHandler = (pageFromInput: number) => {
+    setState((prevState) => {
+      return { ...prevState, currentPage: pageFromInput };
+    });
   };
 
   useEffect(() => {
-    if (!filterInput && !searchInput) {
-      setFilteredProducts(products);
+    if (!state.filterInput && !state.searchInput) {
+      setState((prevState) => {
+        return { ...prevState, filteredProducts: products };
+      });
     }
-    if (filterInput) {
-      setCurrentPage(1);
-      setFilteredProducts(
-        products.filter((product) => product.type === filterInput)
-      );
+    if (state.filterInput) {
+      setState((prevState) => {
+        return { ...prevState, currentPage: 1 };
+      });
+      setState((prevState) => {
+        return {
+          ...prevState,
+          filteredProducts: products.filter(
+            (product) => product.type === state.filterInput
+          ),
+        };
+      });
     }
-    if (searchInput) {
-      setCurrentPage(1);
-      if (!filterInput) setFilteredProducts(products);
-      setFilteredProducts((prevState) =>
-        prevState.filter((product) =>
-          product.name.toLowerCase().includes(searchInput)
-        )
-      );
+    if (state.searchInput) {
+      setState((prevState) => {
+        return { ...prevState, currentPage: 1 };
+      });
+      if (!state.filterInput) {
+        setState((prevState) => {
+          return { ...prevState, filteredProducts: products };
+        });
+      }
+      setState((prevState) => {
+        return {
+          ...prevState,
+          filteredProducts: prevState.filteredProducts.filter((product) =>
+            product.name.toLowerCase().includes(state.searchInput)
+          ),
+        };
+      });
     }
-  }, [filterInput, searchInput, products]);
+  }, [state.filterInput, state.searchInput, products]);
 
   return (
     <div className="store">
       <Filter setFilter={filterHandler} />
-      <Search filter={searchInput} setFilter={setSearchInput} />
+      <Search filter={state.searchInput} setFilter={searchHandler} />
       {currentCards.map((product) => {
         return (
           <div
@@ -64,9 +99,9 @@ const Store = () => {
         );
       })}
       <Pagination
-        totalCards={filteredProducts.length}
-        cardsPerPage={cardsPerPage}
-        setCurrentPage={setCurrentPage}
+        totalCards={state.filteredProducts.length}
+        cardsPerPage={state.cardsPerPage}
+        setCurrentPage={changePageHandler}
       />
     </div>
   );
