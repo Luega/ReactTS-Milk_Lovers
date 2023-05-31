@@ -44,14 +44,18 @@ export const cartReducer = (state: ICart, action: ReducerAction): ICart => {
       if (!action.payload) {
         throw new Error("action.payload missing in QUANTITY action");
       }
-      const { id, quantity } = action.payload;
+      const { id, quantity, price } = action.payload;
       const itemExists: ICartItem | undefined = state.cart.find(
         (item) => item.id === id
       );
       if (!itemExists) {
         throw new Error("Item must exists in order to update quantity");
       }
-      const updatedItem: ICartItem = { ...itemExists, quantity: quantity };
+      const updatedItem: ICartItem = {
+        ...itemExists,
+        quantity: quantity,
+        price: price,
+      };
 
       const filteredCart: ICartItem[] = state.cart.filter(
         (item) => item.id !== id
