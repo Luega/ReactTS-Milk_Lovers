@@ -6,10 +6,10 @@ type Props = {
 };
 
 const Filter = ({ setFilter }: Props) => {
-  const context = useContext(ProductsContext);
+  const { products } = useContext(ProductsContext);
 
   let productTypes: string[] = [];
-  context.products.forEach((product) => {
+  products.forEach((product) => {
     if (productTypes.includes(product.type)) {
       return;
     }

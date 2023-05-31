@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import ProductsContext from "../contexts/products-context";
 import Filter from "../components/Filter";
 import Search from "../components/Search";
-import { IProduct } from "../utils/types-interfaces";
 import Pagination from "../components/Pagination";
+import Cart from "../components/Cart";
 
 const Store = () => {
   const { products } = useContext(ProductsContext);
@@ -85,6 +85,7 @@ const Store = () => {
 
   return (
     <div className="store">
+      <Cart />
       <Filter setFilter={filterHandler} />
       <Search filter={state.searchInput} setFilter={searchHandler} />
       {currentCards.map((product) => {

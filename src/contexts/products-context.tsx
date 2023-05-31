@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, useEffect, useState } from "react";
+import { PropsWithChildren, createContext, useEffect, useState } from "react";
 import { IProduct } from "../utils/types-interfaces";
 
 type TProductsContext = {
@@ -6,10 +6,7 @@ type TProductsContext = {
   defaultImage: string;
 };
 
-const ProductsContext = React.createContext<TProductsContext>({
-  products: [],
-  defaultImage: "",
-});
+const ProductsContext = createContext({} as TProductsContext);
 
 export const ProductsContextProvider = (props: PropsWithChildren) => {
   const [state, setState] = useState<TProductsContext>({
