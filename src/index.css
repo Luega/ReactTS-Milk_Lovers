@@ -1,3 +1,103 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --ColorExtraLight: rgb(248, 247, 242);
+  --ColorLight: rgb(249, 247, 224);
+  --ColorRegulatLight: rgb(228, 179, 146);
+  --ColorRegular: rgb(190, 100, 63);
+  --ColorRegularDark: rgb(119, 30, 24);
+  --ColorExtraDark: rgb(66, 14, 3);
+  --AlertColor: rgb(4, 81, 97);
+  --AlertColorLight: rgb(49, 148, 168);
+  --TextColor: rgb(0, 0, 0);
+}
+
+.my__link {
+  color: var(--ColorRegularDark);
+}
+.my__link:hover {
+  color: var(--ColorRegular);
+}
+
+.my__TextColorRegularDark {
+  color: var(--ColorRegularDark);
+}
+
+.my__hover--TextColorReguar:hover {
+  color: var(--ColorRegular);
+}
+
+.my__TextAlertColor {
+  color: var(--AlertColor);
+}
+
+.my__hover--TextAlertColorLight:hover {
+  color: var(--AlertColorLight);
+}
+
+header,
+footer {
+  height: 80px;
+  background-color: var(--ColorLight);
+}
+
+main {
+  min-height: calc(100vh - 160px);
+  background-color: var(--ColorExtraLight);
+}
+
+.header__nav {
+  background-color: rgba(000, 000, 000, 0.8);
+  animation: translateX 1000ms ease-in-out forwards;
+}
+
+.header__nav .my__link {
+  color: var(--ColorLight);
+}
+.header__nav .my__link:hover {
+  color: var(--ColorExtraLight);
+}
+
+@media only screen and (min-width: 768px) {
+  .header__nav {
+    background-color: transparent;
+    animation: none;
+  }
+
+  .header__nav .my__link {
+    color: var(--ColorRegularDark);
+  }
+
+  .header__nav .my__link:hover {
+    color: var(--ColorRegular);
+  }
+
+  .jumbo {
+    animation: fadeIn 2000ms ease-out forwards;
+  }
+}
+
+@keyframes translateX {
+  0% {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  80% {
+    transform: translateX(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

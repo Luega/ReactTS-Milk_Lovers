@@ -23,11 +23,11 @@ const Product = () => {
   }
 
   return (
-    <div>
+    <main>
       <Link to="/store">Back</Link>
       <Card cartItem={null} product={product} />
       <RangeInput product={product} />
-    </div>
+    </main>
   );
 };
 

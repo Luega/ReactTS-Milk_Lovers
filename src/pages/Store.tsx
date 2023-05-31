@@ -85,7 +85,7 @@ const Store = () => {
   }, [state.filterInput, state.searchInput, products]);
 
   return (
-    <div className="store">
+    <main className="store">
       <Cart />
       <Filter setFilter={filterHandler} />
       <Search filter={state.searchInput} setFilter={searchHandler} />
@@ -105,7 +105,7 @@ const Store = () => {
         cardsPerPage={state.cardsPerPage}
         setCurrentPage={changePageHandler}
       />
-    </div>
+    </main>
   );
 };
 
