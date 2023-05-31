@@ -5,6 +5,7 @@ import Filter from "../components/Filter";
 import Search from "../components/Search";
 import Pagination from "../components/Pagination";
 import Cart from "../components/Cart";
+import Card from "../components/Card";
 
 const Store = () => {
   const { products } = useContext(ProductsContext);
@@ -90,13 +91,13 @@ const Store = () => {
       <Search filter={state.searchInput} setFilter={searchHandler} />
       {currentCards.map((product) => {
         return (
-          <div
-            className="p-5 cursor-pointer"
+          <Card
             key={product.id}
+            className="p-5 cursor-pointer"
+            product={product}
+            cartItem={null}
             onClick={() => redirectHandler(product.id)}
-          >
-            {product.name}
-          </div>
+          />
         );
       })}
       <Pagination

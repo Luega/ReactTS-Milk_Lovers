@@ -3,6 +3,7 @@ import ProductsContext from "../contexts/products-context";
 import { IProduct } from "../utils/types-interfaces";
 import { useLocation } from "react-router-dom";
 import RangeInput from "../components/RangeInput";
+import Card from "../components/Card";
 
 const Product = () => {
   const { products } = useContext(ProductsContext);
@@ -23,10 +24,7 @@ const Product = () => {
 
   return (
     <div>
-      <h1>{product.name}</h1>
-      <h1>{product.type}</h1>
-      <h1>{product.literPrice}</h1>
-      <h1>{product.storage}</h1>
+      <Card cartItem={null} product={product} />
       <RangeInput product={product} />
     </div>
   );

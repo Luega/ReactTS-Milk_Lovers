@@ -2,6 +2,7 @@ import { useContext } from "react";
 import ShoppingCartContext from "../contexts/shopping-cart-context";
 import RangeInput from "./RangeInput";
 import CartButton from "./CartButton";
+import Card from "./Card";
 
 const Cart = () => {
   const cart = useContext(ShoppingCartContext);
@@ -13,10 +14,7 @@ const Cart = () => {
         {cart.cart.map((item) => {
           return (
             <div key={item.id}>
-              <div>{item.name}</div>
-              <div>{item.type}</div>
-              <div>{item.quantity}</div>
-              <div>{item.price}</div>
+              <Card cartItem={item} product={null} />
               <RangeInput product={item} />
               <CartButton
                 action={{
