@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import ProductsContext from "../contexts/products-context";
 import { IProduct } from "../utils/types-interfaces";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import RangeInput from "../components/RangeInput";
 import Card from "../components/Card";
 
