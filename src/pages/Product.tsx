@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import ProductsContext from "../contexts/products-context";
 import { IProduct } from "../utils/types-interfaces";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import RangeInput from "../components/RangeInput";
 import Card from "../components/Card";
 
@@ -24,6 +24,7 @@ const Product = () => {
 
   return (
     <div>
+      <Link to="/store">Back</Link>
       <Card cartItem={null} product={product} />
       <RangeInput product={product} />
     </div>
