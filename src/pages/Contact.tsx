@@ -7,7 +7,7 @@ import {
 const Contact = () => {
   return (
     <main>
-      <section className="contact pt-10 flex flex-col items-center">
+      <section className="contact py-10 flex flex-col items-center">
         <h1 className="my__TextColorRegularDark mb-4 text-3xl font-bold">
           Contact:
         </h1>

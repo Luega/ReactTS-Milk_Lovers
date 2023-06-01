@@ -24,6 +24,9 @@ const Cart = () => {
 
   return (
     <>
+      <span className="my__TextColorRegularDark z-50 fixed top-9 right-2 lg:right-12 text-xl font-bold">
+        {cart.totalQuantity}
+      </span>
       <button
         className="my__button my__buttonRed z-50 fixed top-6 right-8 lg:right-20"
         onClick={dropdownHandler}
@@ -56,7 +59,7 @@ const Cart = () => {
                 No Milks
               </span>
               <img
-                className="h-80 rounded-xl"
+                className="w-80 rounded-xl"
                 src="https://images.pexels.com/photos/1438489/pexels-photo-1438489.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                 alt="Hands with milk"
               />

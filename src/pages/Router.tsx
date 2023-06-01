@@ -1,12 +1,12 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { ProductsContextProvider } from "./contexts/products-context";
-import { ShoppingCartContextProvider } from "./contexts/shopping-cart-context";
-import Layout from "./layout/Layout";
-import Home from "./pages/Home";
-import Store from "./pages/Store";
-import Product from "./pages/Product";
-import Contact from "./pages/Contact";
-import Thanks from "./pages/Thanks";
+import { ProductsContextProvider } from "../contexts/products-context";
+import { ShoppingCartContextProvider } from "../contexts/shopping-cart-context";
+import Layout from "../layout/Layout";
+import Home from "./Home";
+import Store from "./Store";
+import Product from "./Product";
+import Contact from "./Contact";
+import Thanks from "./Thanks";
 
 export const Router = () => {
   return (
