@@ -10,7 +10,7 @@ type Props = {
 
 const RangeInput = ({ product }: Props) => {
   const { cart } = useContext(ShoppingCartContext);
-  const [quantityInput, setQuantityInput] = useState<number>(0);
+  const [quantityInput, setQuantityInput] = useState<number>(1);
 
   const cartProductExists: ICartItem | undefined = cart.find(
     (item) => item.id === product.id
@@ -29,8 +29,8 @@ const RangeInput = ({ product }: Props) => {
           name="quantityInput"
           type="range"
           value={quantityInput}
-          min="0"
-          max="100"
+          min="1"
+          max={product.storage}
         />
         <div className="w-full text-center">
           <label
@@ -47,7 +47,7 @@ const RangeInput = ({ product }: Props) => {
                 payload: {
                   ...product,
                   quantity: quantityInput,
-                  price: 25 * quantityInput,
+                  price: product.literPrice * quantityInput,
                 },
               }}
               text={<BsFillCartPlusFill />}

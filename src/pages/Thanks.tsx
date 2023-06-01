@@ -10,9 +10,9 @@ const Thanks = () => {
         </h1>
         <h2 className="text-xl font-thin">Thank you for choosing us and...</h2>
         <img
-          className="my-2 rounded"
-          src="https://picsum.photos/300/300"
-          alt=""
+          className="h-80 my-2 rounded-xl"
+          src="https://img.freepik.com/premium-vector/cute-funny-strong-happy-milk-box-show-muscle_92289-2491.jpg?w=2000"
+          alt="Happy Milk cartoon"
         />
         <h2 className="text-xl font-thin">...good drink</h2>
         <Link

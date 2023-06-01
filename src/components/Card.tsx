@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import { ICartItem, IProduct } from "../utils/types-interfaces";
+import ProductsContext from "../contexts/products-context";
 
 type Props = {
   product: IProduct | null;
@@ -8,13 +10,15 @@ type Props = {
 };
 
 const Card = ({ product, cartItem, className, onClick }: Props) => {
+  const { defaultImage } = useContext(ProductsContext);
+
   if (product) {
     return (
       <div className={`${className} p-6 pb-2`} onClick={onClick}>
         <img
-          className="mx-auto mb-4 rounded"
-          src="https://picsum.photos/200/200"
-          alt=""
+          className="w-60 mx-auto mb-4 rounded"
+          src={defaultImage}
+          alt={product.name}
         />
         <div className="md:text-lg font-bold">{product.name}</div>
         <div className="my__TextColorRegularDark text-lg md:text-2xl">
@@ -37,9 +41,9 @@ const Card = ({ product, cartItem, className, onClick }: Props) => {
     return (
       <div className={`${className} pt-4 px-4`}>
         <img
-          className="mx-auto mb-4 rounded"
-          src="https://picsum.photos/200/200"
-          alt=""
+          className="w-60 mx-auto mb-4 rounded"
+          src={defaultImage}
+          alt={cartItem.name}
         />
         <div className="md:text-lg font-bold">{cartItem.name}</div>
         <div className="my__TextColorRegularDark text-lg md:text-2xl">

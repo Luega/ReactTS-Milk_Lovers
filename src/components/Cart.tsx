@@ -56,9 +56,9 @@ const Cart = () => {
                 No Milks
               </span>
               <img
-                className="rounded"
-                src="https://picsum.photos/200/200"
-                alt=""
+                className="h-80 rounded-xl"
+                src="https://images.pexels.com/photos/1438489/pexels-photo-1438489.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                alt="Hands with milk"
               />
             </div>
           ) : (
