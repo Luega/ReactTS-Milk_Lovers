@@ -16,6 +16,10 @@
     rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
 }
 
+html {
+  cursor: default;
+}
+
 .my__button {
   padding: 0.3rem 0.8rem;
   border-radius: 3px;
@@ -108,6 +112,14 @@ main {
   background-color: var(--ColorLight);
 }
 
+.storePage__product {
+  transition-duration: 0.5s;
+}
+
+.storePage__product:hover {
+  transform: scale(1.1);
+}
+
 @media only screen and (min-width: 768px) {
   .header__nav {
     background-color: transparent;
@@ -124,6 +136,11 @@ main {
 
   .jumbo {
     animation: fadeIn 2000ms ease-out forwards;
+  }
+
+  .store,
+  .contact {
+    animation: fadeIn 1000ms ease-out forwards;
   }
 }
 

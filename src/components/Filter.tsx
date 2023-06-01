@@ -21,7 +21,7 @@ const Filter = ({ setFilter }: Props) => {
     <div>
       <ImFilter className="mr-2 inline text-2xl" />
       <select
-        className="px-2 py-1 rounded border shadow"
+        className="px-2 py-1 rounded border shadow cursor-pointer"
         onChange={(e) => setFilter(e.target.value)}
       >
         <option value="">All Type</option>

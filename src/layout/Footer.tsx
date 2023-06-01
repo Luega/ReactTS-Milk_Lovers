@@ -8,10 +8,13 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <footer className="footer flex flex-col items-center justify-center border-t text-xl shadow-2xl md:flex-row md:justify-around">
-      <Link className="my__link mb-2 capitalize md:mb-0" to={"/"}>
+      <Link
+        className="my__link mb-2 capitalize md:mb-0 text-2xl font-bold"
+        to={"/"}
+      >
         milk lovers
       </Link>
-      <ul className="flex justify-center">
+      <ul className="flex justify-center text-2xl">
         <li>
           <a
             className="my__link p-2"

@@ -18,7 +18,7 @@ const Header = () => {
 
   return (
     <header className="header flex items-center justify-center relative shadow-lg text-xl md:justify-around">
-      <Link className="my__link capitalize" to={"/"}>
+      <Link className="my__link capitalize text-2xl font-bold" to={"/"}>
         milk lovers
       </Link>
       <button

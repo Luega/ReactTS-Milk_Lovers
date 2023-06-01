@@ -24,7 +24,7 @@ const RangeInput = ({ product }: Props) => {
     <div className="flex flex-col">
       <div className="flex flex-col items-center">
         <input
-          className="my-2"
+          className="my-2 cursor-pointer"
           onChange={(e) => setQuantityInput(Number(e.target.value))}
           name="quantityInput"
           type="range"
