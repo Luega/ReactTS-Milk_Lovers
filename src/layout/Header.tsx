@@ -31,7 +31,7 @@ const Header = () => {
       <nav
         className={`header__nav ${
           dropdown ? "block" : "hidden"
-        } z-50 h-screen w-40 pt-10 fixed top-0 right-0 sm:w-60 md:h-auto md:w-auto md:p-0 md:static md:block`}
+        } h-screen w-40 pt-16 fixed top-0 right-0 sm:w-60 md:h-auto md:w-auto md:p-0 md:static md:block`}
       >
         <ul className="flex flex-col md:flex-row">
           <li className="px-4 py-1 md:p-0 md:mx-4 lg:mx-6">

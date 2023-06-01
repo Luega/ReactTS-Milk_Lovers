@@ -86,23 +86,25 @@ const Store = () => {
   return (
     <main>
       <section className="store py-10 flex flex-col items-center">
-        <div>
+        <div className="w-full flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
           <Filter setFilter={filterHandler} />
           <Search filter={state.searchInput} setFilter={searchHandler} />
         </div>
-        <div className="px-4 py-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="px-4 py-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
           {currentCards.map((product) => {
             return (
-              <Card
-                key={product.id}
-                className="cursor-pointer"
-                product={product}
-                cartItem={null}
-                onClick={() => redirectHandler(product.id)}
-              />
+              <li className="storePage__product w-full h-full shadow-xl rounded ">
+                <Card
+                  key={product.id}
+                  className="cursor-pointer"
+                  product={product}
+                  cartItem={null}
+                  onClick={() => redirectHandler(product.id)}
+                />
+              </li>
             );
           })}
-        </div>
+        </ul>
         <Pagination
           totalCards={state.filteredProducts.length}
           cardsPerPage={state.cardsPerPage}

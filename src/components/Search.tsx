@@ -1,4 +1,4 @@
-import React from "react";
+import { GoSearch } from "react-icons/go";
 
 type Props = {
   filter: string;
@@ -7,17 +7,17 @@ type Props = {
 
 const Search = ({ setFilter, filter }: Props) => {
   return (
-    <>
-      <label>
-        Search:
-        <input
-          type="text"
-          id="search"
-          value={filter}
-          onChange={(e) => setFilter(e.target.value)}
-        />
-      </label>
-    </>
+    <div>
+      <GoSearch className="mr-2 inline text-2xl" />
+      <input
+        className="px-2 py-1 rounded border shadow"
+        type="text"
+        id="search"
+        placeholder="Name..."
+        value={filter}
+        onChange={(e) => setFilter(e.target.value)}
+      />
+    </div>
   );
 };
 

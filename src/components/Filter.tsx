@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { ImFilter } from "react-icons/im";
 import ProductsContext from "../contexts/products-context";
 
 type Props = {
@@ -17,9 +18,13 @@ const Filter = ({ setFilter }: Props) => {
   });
 
   return (
-    <>
-      <select onChange={(e) => setFilter(e.target.value)}>
-        <option value="">None</option>
+    <div>
+      <ImFilter className="mr-2 inline text-2xl" />
+      <select
+        className="px-2 py-1 rounded border shadow"
+        onChange={(e) => setFilter(e.target.value)}
+      >
+        <option value="">All Type</option>
         {productTypes.map((product, index) => {
           return (
             <option key={index} value={product}>
@@ -28,7 +33,7 @@ const Filter = ({ setFilter }: Props) => {
           );
         })}
       </select>
-    </>
+    </div>
   );
 };
 

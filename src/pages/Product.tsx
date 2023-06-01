@@ -24,9 +24,19 @@ const Product = () => {
 
   return (
     <main>
-      <Link to="/store">Back</Link>
-      <Card cartItem={null} product={product} />
-      <RangeInput product={product} />
+      <div className="pt-10 flex flex-col items-center">
+        <div className="productPage__product px-4 py-8 rounded shadow-xl">
+          <div className="flex justify-center">
+            <Card cartItem={null} product={product} />
+          </div>
+          <div className="mt-6">
+            <RangeInput product={product} />
+          </div>
+        </div>
+        <Link className="my__button my__buttonRed my-10" to="/store">
+          To the store
+        </Link>
+      </div>
     </main>
   );
 };

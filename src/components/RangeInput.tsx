@@ -32,20 +32,28 @@ const RangeInput = ({ product }: Props) => {
           min="0"
           max="100"
         />
-        <div className="flex justify-between">
-          <label htmlFor="quantityInput">{quantityInput} liter</label>
-          <CartButton
-            action={{
-              type: `${!cartProductExists ? "ADD" : "QUANTITY"}`,
-              payload: {
-                ...product,
-                quantity: quantityInput,
-                price: 25 * quantityInput,
-              },
-            }}
-            text={<BsFillCartPlusFill />}
-            className="my__button my__buttonBlue ms-2"
-          />
+        <div className="w-full text-center">
+          <label
+            className="w-1/2 inline-block text-end"
+            htmlFor="quantityInput"
+          >
+            <span className="my__TextColorRegularDark">{quantityInput}</span>
+            <span> liter</span>
+          </label>
+          <div className="w-1/2 inline-block text-start">
+            <CartButton
+              action={{
+                type: `${!cartProductExists ? "ADD" : "QUANTITY"}`,
+                payload: {
+                  ...product,
+                  quantity: quantityInput,
+                  price: 25 * quantityInput,
+                },
+              }}
+              text={<BsFillCartPlusFill />}
+              className="my__button my__buttonBlue ms-2 align-middle"
+            />
+          </div>
         </div>
       </div>
     </div>

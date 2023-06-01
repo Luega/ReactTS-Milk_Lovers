@@ -16,7 +16,7 @@ const Cart = () => {
   return (
     <>
       <button
-        className="my__button my__buttonRed z-40 fixed top-6 right-8 lg:right-20"
+        className="my__button my__buttonRed z-50 fixed top-6 right-8 lg:right-20"
         onClick={dropdownHandler}
       >
         <BsFillCartFill className="text-2xl" />
@@ -24,7 +24,7 @@ const Cart = () => {
       <div
         className={`cart__overlay ${
           dropdown ? "block" : "hidden"
-        } min-h-screen w-full fixed top-0 right-0 flex justify-center items-center`}
+        } z-40 min-h-screen w-full fixed top-0 right-0 flex justify-center items-center`}
       >
         <div className="cart__container w-4/5 p-10 rounded overflow-scroll">
           <div className="cart__details text-center text-xl font-bolder">
@@ -46,7 +46,7 @@ const Cart = () => {
               return (
                 <li
                   key={item.id}
-                  className="cart__item w-full h-full m-auto p-2 flex flex-col items-center border rounded"
+                  className="cart__item w-full h-full m-auto p-2 flex flex-col items-center rounded shadow-xl"
                 >
                   <Card cartItem={item} product={null} />
                   <RangeInput product={item} />

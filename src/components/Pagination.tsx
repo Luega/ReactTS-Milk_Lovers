@@ -17,7 +17,7 @@ const Pagination = ({ totalCards, cardsPerPage, setCurrentPage }: Props) => {
       {pages.map((page, index) => {
         return (
           <button
-            className="p-2"
+            className="my__TextColorRegularDark my__hover--TextColorReguar text-xl font-semibold mt-10 mx-2 md:mx-4 lg:mx-6"
             key={index}
             onClick={() => setCurrentPage(page)}
           >

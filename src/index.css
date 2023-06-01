@@ -59,7 +59,9 @@
   color: var(--ColorRegularDark);
 }
 
-.my__hover--TextColorReguar:hover {
+.my__hover--TextColorReguar:hover,
+.my__hover--TextColorReguar:focus,
+.my__hover--TextColorReguar:active {
   color: var(--ColorRegular);
 }
 
@@ -96,11 +98,13 @@ main {
 }
 
 .cart__container {
-  height: 90vh;
+  height: 85vh;
   background-color: var(--ColorExtraLight);
 }
 
-.cart__item {
+.cart__item,
+.storePage__product,
+.productPage__product {
   background-color: var(--ColorLight);
 }
 

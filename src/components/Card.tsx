@@ -10,11 +10,26 @@ type Props = {
 const Card = ({ product, cartItem, className, onClick }: Props) => {
   if (product) {
     return (
-      <div className={className} onClick={onClick}>
-        <div>Name: {product.name}</div>
-        <div>Type: {product.type}</div>
-        <div>Liter price: {product.literPrice}</div>
-        <div>Storage: {product.storage}</div>
+      <div className={`${className} p-6 pb-2`} onClick={onClick}>
+        <img
+          className="mx-auto mb-4 rounded"
+          src="https://picsum.photos/200/200"
+          alt=""
+        />
+        <div className="md:text-lg font-bold">{product.name}</div>
+        <div className="my__TextColorRegularDark text-lg md:text-2xl">
+          {product.type}
+        </div>
+        <div className="font-thin">
+          <span>Storage: </span>
+          <span className="my__TextColorRegularDark">{product.storage}</span>
+          <span> liter</span>
+        </div>
+        <div className="mt-2 text-end">
+          <span>Price: </span>
+          <span className="my__TextColorRegularDark">{product.literPrice}</span>
+          <span> SEK</span>
+        </div>
       </div>
     );
   }
