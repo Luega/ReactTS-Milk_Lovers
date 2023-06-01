@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Store from "./pages/Store";
 import Product from "./pages/Product";
 import Contact from "./pages/Contact";
+import Thanks from "./pages/Thanks";
 
 export const Router = () => {
   return (
@@ -18,6 +19,7 @@ export const Router = () => {
               <Route path="/store" element={<Store />} />
               <Route path="/store/:id" element={<Product />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/thanks" element={<Thanks />} />
             </Route>
           </Routes>
         </ShoppingCartContextProvider>

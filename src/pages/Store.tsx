@@ -93,9 +93,11 @@ const Store = () => {
         <ul className="px-4 py-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
           {currentCards.map((product) => {
             return (
-              <li className="storePage__product w-full h-full shadow-xl rounded ">
+              <li
+                key={product.id}
+                className="storePage__product w-full h-full shadow-xl rounded "
+              >
                 <Card
-                  key={product.id}
                   className="cursor-pointer"
                   product={product}
                   cartItem={null}

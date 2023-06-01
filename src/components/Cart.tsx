@@ -4,13 +4,22 @@ import ShoppingCartContext from "../contexts/shopping-cart-context";
 import RangeInput from "./RangeInput";
 import CartButton from "./CartButton";
 import Card from "./Card";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const cart = useContext(ShoppingCartContext);
   const [dropdown, setDropdown] = useState(false);
+  const navigate = useNavigate();
 
   const dropdownHandler = () => {
     setDropdown(!dropdown);
+  };
+
+  const outBoardingHandler = () => {
+    console.log("ciao");
+
+    setDropdown(!dropdown);
+    navigate(`/thanks`);
   };
 
   return (
@@ -41,34 +50,51 @@ const Cart = () => {
               </span>
             </div>
           </div>
-          <ul className="my-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {cart.cart.map((item) => {
-              return (
-                <li
-                  key={item.id}
-                  className="cart__item w-full h-full m-auto p-2 flex flex-col items-center rounded shadow-xl"
-                >
-                  <Card cartItem={item} product={null} />
-                  <RangeInput product={item} />
-                  <CartButton
-                    action={{
-                      type: "REMOVE",
-                      payload: { ...item },
-                    }}
-                    text={<BsFillCartXFill />}
-                    className="my__button my__buttonRed self-start mt-auto"
-                  />
-                </li>
-              );
-            })}
-          </ul>
-          <CartButton
-            action={{
-              type: "SUBMIT",
-            }}
-            text="Pay"
-            className="my__button my__buttonBlue"
-          />
+          {cart.totalQuantity === 0 ? (
+            <div className="mt-20 flex flex-col items-center">
+              <span className="my__TextAlertColor mb-5 text-3xl font-bold">
+                No Milks
+              </span>
+              <img
+                className="rounded"
+                src="https://picsum.photos/200/200"
+                alt=""
+              />
+            </div>
+          ) : (
+            <>
+              <ul className="my-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                {cart.cart.map((item) => {
+                  return (
+                    <li
+                      key={item.id}
+                      className="cart__item w-full h-full m-auto p-2 flex flex-col items-center rounded shadow-xl"
+                    >
+                      <Card cartItem={item} product={null} />
+                      <RangeInput product={item} />
+                      <CartButton
+                        action={{
+                          type: "REMOVE",
+                          payload: { ...item },
+                        }}
+                        text={<BsFillCartXFill />}
+                        className="my__button my__buttonRed self-start mt-auto"
+                      />
+                    </li>
+                  );
+                })}
+              </ul>
+              <div onClick={() => outBoardingHandler()}>
+                <CartButton
+                  action={{
+                    type: "SUBMIT",
+                  }}
+                  text="Pay"
+                  className="my__button my__buttonBlue"
+                />
+              </div>
+            </>
+          )}
         </div>
       </div>
     </>
