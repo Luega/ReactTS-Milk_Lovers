@@ -4,7 +4,7 @@ import { ReducerAction } from "../utils/types-interfaces";
 
 type Props = {
   action: ReducerAction;
-  text: string;
+  text: any;
   className?: string;
 };
 

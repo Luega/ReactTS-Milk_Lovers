@@ -4,7 +4,6 @@ import ProductsContext from "../contexts/products-context";
 import Filter from "../components/Filter";
 import Search from "../components/Search";
 import Pagination from "../components/Pagination";
-import Cart from "../components/Cart";
 import Card from "../components/Card";
 
 const Store = () => {
@@ -85,26 +84,31 @@ const Store = () => {
   }, [state.filterInput, state.searchInput, products]);
 
   return (
-    <main className="store">
-      <Cart />
-      <Filter setFilter={filterHandler} />
-      <Search filter={state.searchInput} setFilter={searchHandler} />
-      {currentCards.map((product) => {
-        return (
-          <Card
-            key={product.id}
-            className="p-5 cursor-pointer"
-            product={product}
-            cartItem={null}
-            onClick={() => redirectHandler(product.id)}
-          />
-        );
-      })}
-      <Pagination
-        totalCards={state.filteredProducts.length}
-        cardsPerPage={state.cardsPerPage}
-        setCurrentPage={changePageHandler}
-      />
+    <main>
+      <section className="store py-10 flex flex-col items-center">
+        <div>
+          <Filter setFilter={filterHandler} />
+          <Search filter={state.searchInput} setFilter={searchHandler} />
+        </div>
+        <div className="px-4 py-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {currentCards.map((product) => {
+            return (
+              <Card
+                key={product.id}
+                className="cursor-pointer"
+                product={product}
+                cartItem={null}
+                onClick={() => redirectHandler(product.id)}
+              />
+            );
+          })}
+        </div>
+        <Pagination
+          totalCards={state.filteredProducts.length}
+          cardsPerPage={state.cardsPerPage}
+          setCurrentPage={changePageHandler}
+        />
+      </section>
     </main>
   );
 };

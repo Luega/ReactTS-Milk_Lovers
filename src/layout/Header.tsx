@@ -9,9 +9,11 @@ const Header = () => {
     setDropdown(!dropdown);
   };
   const blurHandler = () => {
-    setTimeout(() => {
-      setDropdown(!dropdown);
-    }, 100);
+    if (dropdown) {
+      setTimeout(() => {
+        setDropdown(!dropdown);
+      }, 100);
+    }
   };
 
   return (
@@ -20,16 +22,16 @@ const Header = () => {
         milk lovers
       </Link>
       <button
-        className="z-50 fixed top-8 right-8 md:hidden"
+        className="my__button my__buttonRed fixed top-6 left-8 md:hidden"
         onClick={dropdownHandler}
         onBlur={blurHandler}
       >
-        <HiOutlineBars3 />
+        <HiOutlineBars3 className="text-2xl" />
       </button>
       <nav
         className={`header__nav ${
           dropdown ? "block" : "hidden"
-        } h-screen w-40 pt-10 fixed top-0 right-0 sm:w-60 md:h-auto md:w-auto md:p-0 md:static md:block`}
+        } z-50 h-screen w-40 pt-10 fixed top-0 right-0 sm:w-60 md:h-auto md:w-auto md:p-0 md:static md:block`}
       >
         <ul className="flex flex-col md:flex-row">
           <li className="px-4 py-1 md:p-0 md:mx-4 lg:mx-6">

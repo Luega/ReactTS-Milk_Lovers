@@ -1,4 +1,5 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import { BsFillCartFill, BsFillCartXFill } from "react-icons/bs";
 import ShoppingCartContext from "../contexts/shopping-cart-context";
 import RangeInput from "./RangeInput";
 import CartButton from "./CartButton";
@@ -6,34 +7,71 @@ import Card from "./Card";
 
 const Cart = () => {
   const cart = useContext(ShoppingCartContext);
+  const [dropdown, setDropdown] = useState(false);
+
+  const dropdownHandler = () => {
+    setDropdown(!dropdown);
+  };
+
   return (
-    <div className="p-8">
-      {cart.totalQuantity} Litri
-      {cart.totalPrice} Euro
-      <div>
-        {cart.cart.map((item) => {
-          return (
-            <div key={item.id}>
-              <Card cartItem={item} product={null} />
-              <RangeInput product={item} />
-              <CartButton
-                action={{
-                  type: "REMOVE",
-                  payload: { ...item },
-                }}
-                text="remove"
-              />
+    <>
+      <button
+        className="my__button my__buttonRed z-40 fixed top-6 right-8 lg:right-20"
+        onClick={dropdownHandler}
+      >
+        <BsFillCartFill className="text-2xl" />
+      </button>
+      <div
+        className={`cart__overlay ${
+          dropdown ? "block" : "hidden"
+        } min-h-screen w-full fixed top-0 right-0 flex justify-center items-center`}
+      >
+        <div className="cart__container w-4/5 p-10 rounded overflow-scroll">
+          <div className="cart__details text-center text-xl font-bolder">
+            <div className="mb-2">
+              <span>Milk: </span>
+              <span className="my__TextColorRegularDark">
+                {cart.totalQuantity} liter
+              </span>
             </div>
-          );
-        })}
+            <div>
+              <span>To pay: </span>
+              <span className="my__TextColorRegularDark">
+                {cart.totalPrice} SEK
+              </span>
+            </div>
+          </div>
+          <ul className="my-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {cart.cart.map((item) => {
+              return (
+                <li
+                  key={item.id}
+                  className="cart__item w-full h-full m-auto p-2 flex flex-col items-center border rounded"
+                >
+                  <Card cartItem={item} product={null} />
+                  <RangeInput product={item} />
+                  <CartButton
+                    action={{
+                      type: "REMOVE",
+                      payload: { ...item },
+                    }}
+                    text={<BsFillCartXFill />}
+                    className="my__button my__buttonRed self-start mt-auto"
+                  />
+                </li>
+              );
+            })}
+          </ul>
+          <CartButton
+            action={{
+              type: "SUBMIT",
+            }}
+            text="Pay"
+            className="my__button my__buttonBlue"
+          />
+        </div>
       </div>
-      <CartButton
-        action={{
-          type: "SUBMIT",
-        }}
-        text="submit"
-      />
-    </div>
+    </>
   );
 };
 

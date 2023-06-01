@@ -12,6 +12,32 @@
   --AlertColor: rgb(4, 81, 97);
   --AlertColorLight: rgb(49, 148, 168);
   --TextColor: rgb(0, 0, 0);
+  --BoxShadowButton: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+.my__button {
+  padding: 0.3rem 0.8rem;
+  border-radius: 3px;
+  box-shadow: var(--BoxShadowButton);
+}
+
+.my__buttonBlue {
+  color: var(--ColorExtraLight);
+  background-color: var(--AlertColor);
+}
+
+.my__buttonBlue:hover {
+  background-color: var(--AlertColorLight);
+}
+
+.my__buttonRed {
+  color: var(--ColorExtraLight);
+  background-color: var(--ColorRegularDark);
+}
+
+.my__buttonRed:hover {
+  background-color: var(--ColorRegular);
 }
 
 .my__link {
@@ -19,6 +45,14 @@
 }
 .my__link:hover {
   color: var(--ColorRegular);
+}
+
+.my__TextColorExtraLight {
+  color: var(--ColorExtraLight);
+}
+
+.my__TextColorColorLight {
+  color: var(--ColorLight);
 }
 
 .my__TextColorRegularDark {
@@ -48,7 +82,8 @@ main {
   background-color: var(--ColorExtraLight);
 }
 
-.header__nav {
+.header__nav,
+.cart__overlay {
   background-color: rgba(000, 000, 000, 0.8);
   animation: translateX 1000ms ease-in-out forwards;
 }
@@ -58,6 +93,15 @@ main {
 }
 .header__nav .my__link:hover {
   color: var(--ColorExtraLight);
+}
+
+.cart__container {
+  height: 90vh;
+  background-color: var(--ColorExtraLight);
+}
+
+.cart__item {
+  background-color: var(--ColorLight);
 }
 
 @media only screen and (min-width: 768px) {
