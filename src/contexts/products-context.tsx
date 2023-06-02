@@ -1,8 +1,7 @@
 import { PropsWithChildren, createContext, useEffect, useState } from "react";
 import { IProduct } from "../utils/types-interfaces";
 
-import env from "react-dotenv";
-const url = env.ENV_VAR_1;
+const url = "https://express-ts-milk-lovers.vercel.app/api/products";
 
 type TProductsContext = {
   products: IProduct[];
