@@ -1,7 +1,8 @@
 import { PropsWithChildren, createContext, useEffect, useState } from "react";
 import { IProduct } from "../utils/types-interfaces";
 
-const url = process.env.REACT_APP_API_URL;
+import env from "react-dotenv";
+const url = env.ENV_VAR_1;
 
 type TProductsContext = {
   products: IProduct[];
