@@ -5,6 +5,7 @@ import Filter from "../components/Filter";
 import Search from "../components/Search";
 import Pagination from "../components/Pagination";
 import Card from "../components/Card";
+import { IProduct } from "../utils/types-interfaces";
 
 const Store = () => {
   const { products } = useContext(ProductsContext);
@@ -14,15 +15,23 @@ const Store = () => {
     searchInput: "",
     currentPage: 1,
     cardsPerPage: 9,
+    currentCards: [] as IProduct[],
   });
   const navigate = useNavigate();
 
-  const lastCardIndex = state.currentPage * state.cardsPerPage;
-  const firstCardIndex = lastCardIndex - state.cardsPerPage;
-  const currentCards = state.filteredProducts.slice(
-    firstCardIndex,
-    lastCardIndex
-  );
+  useEffect(() => {
+    const lastCardIndex = state.currentPage * state.cardsPerPage;
+    const firstCardIndex = lastCardIndex - state.cardsPerPage;
+    setState((prevState) => {
+      return {
+        ...prevState,
+        currentCards: prevState.filteredProducts.slice(
+          firstCardIndex,
+          lastCardIndex
+        ),
+      };
+    });
+  });
 
   const redirectHandler = (productId: string) => {
     return navigate(`/store/${productId}`);
@@ -90,23 +99,36 @@ const Store = () => {
           <Filter setFilter={filterHandler} />
           <Search filter={state.searchInput} setFilter={searchHandler} />
         </div>
-        <ul className="px-4 py-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
-          {currentCards.map((product) => {
-            return (
-              <li
-                key={product.id}
-                className="storePage__product w-full h-full shadow-xl rounded "
-              >
-                <Card
-                  className="cursor-pointer"
-                  product={product}
-                  cartItem={null}
-                  onClick={() => redirectHandler(product.id)}
-                />
-              </li>
-            );
-          })}
-        </ul>
+        {state.currentCards.length !== 0 ? (
+          <ul className="px-4 py-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+            {state.currentCards.map((product) => {
+              return (
+                <li
+                  key={product.id}
+                  className="storePage__product w-full h-full shadow-xl rounded "
+                >
+                  <Card
+                    className="cursor-pointer"
+                    product={product}
+                    cartItem={null}
+                    onClick={() => redirectHandler(product.id)}
+                  />
+                </li>
+              );
+            })}
+          </ul>
+        ) : (
+          <div className="w-full min-h-screen">
+            <ul className="w-3/4 h-screen m-auto p-10 grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-row-1 md:grid-row-2 lg:grid-row-3">
+              <li className="my__isLoading__card w-full h-full m-auto border rounded-lg shadow-lg"></li>
+              <li className="my__isLoading__card w-full h-full m-auto border rounded-lg shadow-lg"></li>
+              <li className="my__isLoading__card w-full h-full m-auto border rounded-lg shadow-lg"></li>
+              <li className="my__isLoading__card w-full h-full m-auto border rounded-lg shadow-lg"></li>
+              <li className="my__isLoading__card w-full h-full m-auto border rounded-lg shadow-lg"></li>
+              <li className="my__isLoading__card w-full h-full m-auto border rounded-lg shadow-lg"></li>
+            </ul>
+          </div>
+        )}
         <Pagination
           totalCards={state.filteredProducts.length}
           cardsPerPage={state.cardsPerPage}
