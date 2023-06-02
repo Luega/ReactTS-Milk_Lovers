@@ -1,6 +1,8 @@
 import { PropsWithChildren, createContext, useEffect, useState } from "react";
 import { IProduct } from "../utils/types-interfaces";
 
+const url = process.env.REACT_APP_API_URL;
+
 type TProductsContext = {
   products: IProduct[];
   defaultImage: string;
@@ -16,10 +18,11 @@ export const ProductsContextProvider = (props: PropsWithChildren) => {
 
   useEffect(() => {
     const getProducts = async () => {
-      await fetch("http://localhost:8000/api/products")
-        .then((data) => data.json())
-        .then((results) => setState(results))
-        .catch((err) => console.log(err));
+      url &&
+        (await fetch(url)
+          .then((data) => data.json())
+          .then((results) => setState(results))
+          .catch((err) => console.log(err)));
     };
 
     getProducts();

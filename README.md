@@ -51,14 +51,21 @@ To get started with the Milk Lovers E-Commerce UI , follow these steps:
   npm install
 ```
 
-4. Start the API server: Follow the instructions in the [API repository](https://github.com/Luega/ExpressTS-Milk_Lovers.git) to set up and run the API server.
-5. Start the development server:
+4. Set the environment variables in a .env file or as system environment variables.
+
+```bash
+REACT_APP_API_URL: The url on which the UI will fetch data from api.
+```
+
+5. Start the API server: Follow the instructions in the [API repository](https://github.com/Luega/ExpressTS-Milk_Lovers.git) to set up and run the API server.
+
+6. Start the development server:
 
 ```bash
   npm run start
 ```
 
-6. Open your browser and visit http://localhost:3000 to access.
+7. Open your browser and visit http://localhost:3000 to access.
 
 Note: Please ensure that the API server is running before starting the Milk Shop UI application. The UI fetches data from the API to display milk products and perform various operations.
 
