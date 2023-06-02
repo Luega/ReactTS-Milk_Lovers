@@ -1,6 +1,4 @@
-import { useContext } from "react";
 import { ICartItem, IProduct } from "../utils/types-interfaces";
-import ProductsContext from "../contexts/products-context";
 
 type Props = {
   product: IProduct | null;
@@ -10,8 +8,6 @@ type Props = {
 };
 
 const Card = ({ product, cartItem, className, onClick }: Props) => {
-  const { defaultImage } = useContext(ProductsContext);
-
   if (product) {
     return (
       <div className={`${className} p-6 pb-2`} onClick={onClick}>
