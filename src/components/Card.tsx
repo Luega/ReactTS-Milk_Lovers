@@ -17,7 +17,7 @@ const Card = ({ product, cartItem, className, onClick }: Props) => {
       <div className={`${className} p-6 pb-2`} onClick={onClick}>
         <img
           className="w-60 mx-auto mb-4 rounded"
-          src={defaultImage}
+          src="https://images.pexels.com/photos/799273/pexels-photo-799273.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           alt={product.name}
         />
         <div className="md:text-lg font-bold">{product.name}</div>
@@ -42,7 +42,7 @@ const Card = ({ product, cartItem, className, onClick }: Props) => {
       <div className={`${className} pt-4 px-4`}>
         <img
           className="w-60 mx-auto mb-4 rounded"
-          src={defaultImage}
+          src="https://images.pexels.com/photos/799273/pexels-photo-799273.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           alt={cartItem.name}
         />
         <div className="md:text-lg font-bold">{cartItem.name}</div>
