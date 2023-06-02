@@ -134,14 +134,14 @@ main {
     color: var(--ColorRegular);
   }
 
-  /* .jumbo {
+  .jumbo {
     animation: fadeIn 2000ms ease-out forwards;
   }
 
   .store,
   .contact {
     animation: fadeIn 1000ms ease-out forwards;
-  } */
+  }
 }
 
 @keyframes translateX {
