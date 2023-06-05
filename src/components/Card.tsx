@@ -46,7 +46,7 @@ const Card = ({ product, cartItem, className, onClick }: Props) => {
           {cartItem.type}
         </div>
         <div className="font-thin">
-          <span>Storage: </span>
+          <span>Liter: </span>
           <span className="my__TextColorRegularDark">{cartItem.quantity}</span>
         </div>
         <div className="mt-2">

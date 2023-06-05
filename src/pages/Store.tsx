@@ -31,7 +31,7 @@ const Store = () => {
         ),
       };
     });
-  }, [state.currentPage, state.cardsPerPage]);
+  }, [state.currentPage, state.cardsPerPage, state.filteredProducts]);
 
   const redirectHandler = (productId: string) => {
     return navigate(`/store/${productId}`);
@@ -99,7 +99,7 @@ const Store = () => {
           <Filter setFilter={filterHandler} />
           <Search filter={state.searchInput} setFilter={searchHandler} />
         </div>
-        {state.currentCards.length !== 0 ? (
+        {state.filteredProducts.length !== 0 && (
           <ul className="px-4 py-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
             {state.currentCards.map((product) => {
               return (
@@ -117,7 +117,20 @@ const Store = () => {
               );
             })}
           </ul>
-        ) : (
+        )}
+        {state.filteredProducts.length === 0 && (
+          <div className="mt-20 flex flex-col items-center">
+            <span className="my__TextAlertColor mb-5 text-3xl font-bold">
+              No Milks
+            </span>
+            <img
+              className="w-80 rounded-xl"
+              src="https://images.pexels.com/photos/1438489/pexels-photo-1438489.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              alt="Hands with milk"
+            />
+          </div>
+        )}
+        {!products && (
           <div className="w-full min-h-screen">
             <ul className="w-3/4 h-screen m-auto p-10 grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-row-1 md:grid-row-2 lg:grid-row-3">
               <li className="my__isLoading__card w-full h-full m-auto border rounded-lg shadow-lg"></li>
