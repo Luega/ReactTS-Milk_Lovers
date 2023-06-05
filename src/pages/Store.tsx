@@ -31,7 +31,7 @@ const Store = () => {
         ),
       };
     });
-  });
+  }, [state.currentPage, state.cardsPerPage]);
 
   const redirectHandler = (productId: string) => {
     return navigate(`/store/${productId}`);
