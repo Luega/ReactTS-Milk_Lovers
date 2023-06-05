@@ -15,7 +15,7 @@ const Search = ({ setFilter, filter }: Props) => {
         id="search"
         placeholder="Name..."
         value={filter}
-        onChange={(e) => setFilter(e.target.value)}
+        onChange={(e) => setFilter(e.target.value.toLowerCase())}
       />
     </div>
   );

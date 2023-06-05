@@ -1,8 +1,6 @@
 import { PropsWithChildren, createContext, useEffect, useState } from "react";
 import { IProduct } from "../utils/types-interfaces";
 
-const url = "https://express-ts-milk-lovers.vercel.app/api/products";
-
 type TProductsContext = {
   products: IProduct[];
   defaultImage: string;
@@ -18,11 +16,10 @@ export const ProductsContextProvider = (props: PropsWithChildren) => {
 
   useEffect(() => {
     const getProducts = async () => {
-      url &&
-        (await fetch(url)
-          .then((data) => data.json())
-          .then((results) => setState(results))
-          .catch((err) => console.log(err)));
+      await fetch("https://express-ts-milk-lovers.vercel.app/api/products")
+        .then((data) => data.json())
+        .then((results) => setState(results))
+        .catch((err) => console.log(err));
     };
 
     getProducts();
