@@ -2,6 +2,8 @@
 
 The Milk Lovers E-Commerce UI is a fully responsive React.js-based project that provides a user interface for a shop where customers can purchase a variety of different types of milk. This project utilizes React.js hooks such as useState, useEffect, useContext, and useReducer for state management, along with Tailwind CSS for styling.
 
+[Take a look](https://milk-lovers.netlify.app/)
+
 ![My Image](screenshot/screenshot1.png)
 ![My Image](screenshot/screenshot2.png)
 ![My Image](screenshot/screenshot3.png)

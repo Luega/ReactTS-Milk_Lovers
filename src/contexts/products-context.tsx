@@ -1,5 +1,6 @@
 import { PropsWithChildren, createContext, useEffect, useState } from "react";
 import { IProduct } from "../utils/types-interfaces";
+import { milkBrands } from "../db/db";
 
 type TProductsContext = {
   products: IProduct[];
@@ -9,21 +10,21 @@ type TProductsContext = {
 const ProductsContext = createContext({} as TProductsContext);
 
 export const ProductsContextProvider = (props: PropsWithChildren) => {
-  const [state, setState] = useState<TProductsContext>({
-    products: [],
+  const [state, _setState] = useState<TProductsContext>({
+    products: milkBrands,
     defaultImage: "",
   });
 
-  useEffect(() => {
-    const getProducts = async () => {
-      await fetch("https://express-ts-milk-lovers.vercel.app/api/products")
-        .then((data) => data.json())
-        .then((results) => setState(results))
-        .catch((err) => console.log(err));
-    };
+  // useEffect(() => {
+  //   const getProducts = async () => {
+  //     await fetch("https://express-ts-milk-lovers.vercel.app/api/products")
+  //       .then((data) => data.json())
+  //       .then((results) => setState(results))
+  //       .catch((err) => console.log(err));
+  //   };
 
-    getProducts();
-  }, []);
+  //   getProducts();
+  // }, []);
 
   return (
     <ProductsContext.Provider
